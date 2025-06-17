@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+   <meta charset="UTF-8">
+   <title>Finalizar Pedido</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/finalizar_pedido.css') }}">
+   <link rel="shortcut icon" type="imagex/png" href="/static/images/icone.ico">
+</head>
+<body>
+   <div class="top-bar">
+       <img src="{{ url_for('static', filename='images/logo1.jpg') }}" alt="Logo" class="logo">
+       <a href="{{ url_for('catalogo') }}" class="btn-voltar">← Catálogo</a>
+   </div>
+
+   <h1>Finalizar Pedido</h1>
+
+   <div class="card-produto">
+       <img src="{{ produto.foto_url }}" alt="{{ produto.nome }}" width="200">
+       <h2>{{ produto.nome }}</h2>
+       <p>{{ produto.descricao }}</p>
+       <p><strong>R$ {{ '%.2f'|format(produto.valor) }}</strong></p>
+
+       <div class="btn-container">
+           <a href="{{ url_for('confirmar_pedido', produto_id=produto.id) }}" class="btn-confirmar">
+               Confirmar Pedido no WhatsApp
+           </a>
+       </div>
+   </div>
+</body>
+</html>
